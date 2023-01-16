@@ -1,4 +1,4 @@
-def power_factorization(number, base):
+def power_factorize(number, base):
     if (number % base != 0):
         return 0
 
@@ -11,7 +11,7 @@ def power_factorization(number, base):
 
 
 def godel_decode(number):
-    x = power_factorization(number + 1, 2)
+    x = power_factorize(number + 1, 2)
     y = int((((number + 1) / 2 ** x) - 1) / 2)
 
     return (x, y)

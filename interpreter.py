@@ -80,7 +80,7 @@ def successor_snapshot(program, snapshot):
     elif code == 2:
         # X <- X - 1
         snapshot["i"] += 1
-        snapshot[variable] = snapshot[variable] - 1 if snapshot[variable] > 0 else 0
+        snapshot[variable] = max(snapshot[variable] - 1, 0)
         return snapshot
     else:
         # IF X != 0 GOTO L
