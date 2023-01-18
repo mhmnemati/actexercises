@@ -51,11 +51,11 @@ def init_snapshot(program, inputs):
         snapshot[variable_encode(variable + 1)] = 0
 
     xs = sorted([int(key[1:]) for key in snapshot.keys() if key[0] == 'X'])
-    for i in range(1, xs[-1] if len(xs) > 0 else 0):
+    for i in range(1, xs[-1] + 1 if len(xs) > 0 else 0):
         snapshot[f"X{i}"] = int(inputs[i - 1]) if len(inputs) >= i else 0
 
     zs = sorted([int(key[1:]) for key in snapshot.keys() if key[0] == 'Z'])
-    for i in range(1, zs[-1] if len(xs) > 0 else 0):
+    for i in range(1, zs[-1] + 1 if len(xs) > 0 else 0):
         snapshot[f"Z{i}"] = 0
 
     return snapshot
