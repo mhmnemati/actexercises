@@ -1,4 +1,4 @@
-# CT Answers
+# ACT Answers
 
 -   **Answer Set**: No. 03
 -   **Full Name**: Mohammad Hosein Nemati

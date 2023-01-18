@@ -1,6 +1,6 @@
-# CT Exercises
+# ACT Exercises
 
-`CT Exercises` is a project containing some computability theory exercises.
+`ACT Exercises` is a project containing some advanced computability theory exercises.
 
 ## Contributing
 
