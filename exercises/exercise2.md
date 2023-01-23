@@ -109,12 +109,6 @@ $$
 
 ---
 
-## Problem 2
-
-> **Problem**: Prove or disprove: **Each strictly ascending functions are computable**.
-
----
-
 ## Problem 3
 
 > **Problem**: For the functions $f, g: \N \rightarrow \N$ define $f, g$ like bellow, if $S, g$ both are computable, then is $f$ computable?
