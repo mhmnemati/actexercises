@@ -176,6 +176,8 @@ $$
     \\
     & \vdots
     \\
+    & h(f^{n - 1}(t + 1)) = g(h(f^{n}(t + 1)))
+    \\
     & h(f^{n}(t + 1)) = g(h(f^{n + 1}(t + 1)))
     \\
     & \vdots
@@ -186,11 +188,100 @@ $$
 \end{aligned}
 $$
 
+Let's inverse this recursive unroll:
+
+$$
+\begin{aligned}
+    & h(f^{m}(t + 1)) = h(0) = k
+    \\
+    & h(f^{m - 1}(t + 1)) = g(h(f^{m}(t + 1))) = g(k)
+    \\
+    & h(f^{m - 2}(t + 1)) = g(h(f^{m-1}(t + 1))) = g(g(k))
+    \\
+    & \vdots
+    \\
+    & h(f^{n}(t + 1)) = g(h(f^{n + 1}(t + 1)))
+    \\
+    & h(f^{n - 1}(t + 1)) = g(h(f^{n}(t + 1)))
+    \\
+    & \vdots
+    \\
+    & h(f(f(t + 1))) = g(h(f(f(f(t + 1)))))
+    \\
+    & h(f(t + 1)) = g(h(f(f(t + 1))))
+    \\
+    & h(t + 1) = g(h(f(t + 1)))
+\end{aligned}
+$$
+
+Now, we will prove by induction, that if we can compute $h(f^{n}(t + 1))$ then we can compute $h(f^{n-1}(t + 1))$:
+
+$$
+\begin{aligned}
+    & \text{Induction Base}:
+    \\
+    & h(f^{m}(t + 1)) = h(0) = k
+    \\
+    \\
+    & \text{Induction Hypothesis}:
+    \\
+    & h(f^{n}(t + 1)) = g(h(f^{n + 1}(t + 1)))
+    \\
+    \\
+    & \text{Induction}:
+    \\
+    & h(f^{n - 1}(t + 1)) = g(h(f^{n}(t + 1))) = g(g(h(f^{n + 1}(t + 1))))
+    \\
+\end{aligned}
+$$
+
+So, function $h$ is computable using multiple applying of $g^{n}(x)$.
+
 ---
 
 ## Page 48, Problem 9
 
 > **Problem**: Let $g(x)$ be a primitive recursive function and let $f(0, x) = g(x), f(n + 1, x) = f(n, f(n, x))$. Prove that $f(n, x)$ is primitive recursive.
+
+Let's unroll $f(n, x)$:
+
+$$
+\begin{aligned}
+    & f(0, x) = g(x)
+    \\
+    & f(1, x) = f(0, f(0, x)) = f(0, g(x)) = g(g(x))
+    \\
+    & f(2, x) = f(1, f(1, x)) = f(1, g(g(x))) = g^{4}(x)
+    \\
+    & f(3, x) = f(2, f(2, x)) = f(2, g(g(g(g(x))))) = g^{8}(x)
+    \\
+    & \vdots
+    \\
+    & f(n, x) = g^{2^n}(x)
+\end{aligned}
+$$
+
+Now, we will prove by **Mathematical Induction** that if $f(n, x)$ is primitive recursive, then $f(n + 1, x)$ is also:
+
+$$
+\begin{aligned}
+    & \text{Induction Base}:
+    \\
+    & f(0, x) = g(x) \;\text{is P.R}
+    \\
+    \\
+    & \text{Induction Hypothesis}:
+    \\
+    & f(n, x) = f(n - 1, f(n - 1, x))
+    \\
+    \\
+    & \text{Induction Goal}:
+    \\
+    & f(n + 1, x) = f(n, f(n, x)) = f(n, g^{2^n}(x)) = g^{2^n}(g^{2^n}(x)) = g^{2^{n + 1}}(x)
+\end{aligned}
+$$
+
+As we know, $g(x)$ and $x^y$ and $g^{y}(x)$ are primitive recursive, so $f(n, x)$ is also primitive recursive.
 
 ---
 
